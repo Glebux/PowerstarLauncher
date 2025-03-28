@@ -214,14 +214,6 @@ void FixupCvarFlags()
 
 		{"test_setteam", FCVAR_GAMEDLL_FOR_REMOTE_CLIENTS},
 		{"melee_lunge_ent", FCVAR_GAMEDLL_FOR_REMOTE_CLIENTS},
-
-		// fcvars that should be cheats
-		{"net_ignoreAllSnapshots", FCVAR_CHEAT},
-		{"highlight_draw", FCVAR_CHEAT},
-		// these should potentially be replicated rather than cheat, like sv_footsteps is
-		// however they're defined on client, so can't make replicated atm sadly
-		{"cl_footstep_event_max_dist", FCVAR_CHEAT},
-		{"cl_footstep_event_max_dist_titan", FCVAR_CHEAT},
 	};
 
 	// array of cvars and the flags we want to remove from them
@@ -321,7 +313,7 @@ void FixupCvarFlags()
 		{"hitch_alert_color", FCVAR_DEVELOPMENTONLY},
 		{"particles_cull_all", FCVAR_DEVELOPMENTONLY},
 		{"particles_cull_dlights", FCVAR_DEVELOPMENTONLY},
-		{"map_settings_override", FCVAR_DEVELOPMENTONLY},
+		{"map_settings_override", FCVAR_DEVELOPMENTONLY | FCVAR_CHEAT},
 		{"highlight_draw", FCVAR_DEVELOPMENTONLY},
 
 		// sys/engine settings
@@ -360,7 +352,8 @@ void FixupCvarFlags()
 		{"damagedefs_reparse_client", FCVAR_DEVELOPMENTONLY},
 		{"playerSettings_reparse", FCVAR_DEVELOPMENTONLY},
 		{"_playerSettings_reparse_Server", FCVAR_DEVELOPMENTONLY},
-
+		{"fog_enable_water_fog", FCVAR_CHEAT},
+		{"viewDrift", FCVAR_REPLICATED}
 	};
 
 	const std::vector<std::tuple<const char*, const char*>> CVAR_FIXUP_DEFAULT_VALUES = {
